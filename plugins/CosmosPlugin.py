@@ -19,7 +19,7 @@ class CosmosPlugin:
     @sk_function(
         description='Get flights from CosmosDB with a departure and arrival city.',
         name='GetFlights',
-        input_description='Two somma-separated values: departure city, arrival city.'
+        input_description='Two comma-separated values: departure city, arrival city.'
     )
     def get_flights(self, input: str) -> str:
 
