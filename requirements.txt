@@ -1,0 +1,6 @@
+semantic-kernel
+pyautogen
+azure-cosmos
+azure-identity
+pandas
+openai
