@@ -2,7 +2,7 @@
 
 # Original at https://github.com/microsoft/semantic-kernel/blob/sk-autogen/python/notebooks/planning/autogen_planner.py
 # Switch to using version included in semantic kernel package once available
-
+# Note added workaround in line 128
 
 from typing import Optional
 import semantic_kernel, autogen
