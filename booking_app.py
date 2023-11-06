@@ -1,4 +1,4 @@
-from plugins.CosmosPlugin import CosmosPlugin
+from plugins.FlightsPlugin import FlightsPlugin
 from semantic_kernel.core_skills import TimeSkill
 from semantic_kernel.connectors.ai.open_ai import AzureTextCompletion
 from planning.autogen_planner import AutoGenPlanner
@@ -6,7 +6,6 @@ import semantic_kernel as sk
 import logging
 from dotenv import load_dotenv
 import os
-import autogen
 
 async def main():
 
@@ -24,7 +23,7 @@ async def main():
 
     # Register plugins
     cosmos_conn_str = os.getenv('COSMOS_CONNECTION_STRING')
-    cosmos_plugin = kernel.import_skill(CosmosPlugin(cosmos_conn_str), skill_name='CosmosPlugin')
+    cosmos_plugin = kernel.import_skill(FlightsPlugin(cosmos_conn_str), skill_name='FlightsPlugin')
     time_skill = kernel.import_skill(TimeSkill(), skill_name='TimeSkill')
 
     logging.info('Plugins registered.')
@@ -39,21 +38,14 @@ async def main():
 
     planner = AutoGenPlanner(kernel, llm_config=llm_config)
 
-    user = planner.create_assistant_agent('User', persona='You are the user of a airline booking app. You are looking for a cheap flight at the next possible date. You need to know the date, time of departure, airline and price. When the booking agent has suggested the best flight and you have all the information, reply "TERMINATE".')
-    booking_agent = planner.create_assistant_agent('BookingAgent', persona='You are a booking agent, looking for flights on the behalf of the user.')
+    booking_agent = planner.create_assistant_agent('BookingAgent', persona='You are an airline booking agent. You can search for flights and book them. The user cannot reply to any of your messages.')
     worker = planner.create_user_agent('Worker', max_auto_reply=4, human_input='NEVER')
 
     logging.info('Planner ready.')
 
-    # Setup group chat
-    groupchat = autogen.GroupChat(agents=[user, booking_agent, worker], messages=[], max_round=12)
-    groupchat_manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
-
-    logging.info('Group chat ready.')
-
     # Start chat
 
-    user.initiate_chat(groupchat_manager, message='What date is today? What is the cheapest flight from Tokyo to Toronto?')
+    worker.initiate_chat(booking_agent, message='Book the cheapest flight from Tokyo to Toronto.')
 
 
 if __name__ == '__main__':
