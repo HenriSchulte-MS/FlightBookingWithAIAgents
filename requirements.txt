@@ -1,6 +1,6 @@
 semantic-kernel
-pyautogen==0.2.0b2
+pyautogen==0.2.0b1
 azure-cosmos
 azure-identity
 pandas
-openai
+openai>=1.0.0
