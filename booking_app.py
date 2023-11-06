@@ -6,6 +6,7 @@ import semantic_kernel as sk
 import logging
 from dotenv import load_dotenv
 import os
+import autogen
 
 async def main():
 
@@ -29,21 +30,30 @@ async def main():
     logging.info('Plugins registered.')
 
     llm_config = {
-        'type': 'azure',
-        'azure_deployment': deployment,
-        'azure_api_key': api_key,
-        'azure_endpoint': endpoint
+        'api_type': 'azure',
+        'model': deployment,
+        'api_key': api_key,
+        'base_url': endpoint,
+        'api_version': '2023-07-01-preview'
     }
 
     planner = AutoGenPlanner(kernel, llm_config=llm_config)
 
-    assistant = planner.create_assistant_agent('Assistant')
+    user = planner.create_assistant_agent('User', persona='You are the user of a airline booking app. You are looking for a cheap flight at the next possible date. You need to know the date, time of departure, airline and price. When the booking agent has suggested the best flight and you have all the information, reply "TERMINATE".')
+    booking_agent = planner.create_assistant_agent('BookingAgent', persona='You are a booking agent, looking for flights on the behalf of the user.')
     worker = planner.create_user_agent('Worker', max_auto_reply=4, human_input='NEVER')
 
     logging.info('Planner ready.')
 
-    task = 'What date is today? Are there any flights from Tokyo to Toronto in the near future?'
-    worker.initiate_chat(assistant, message=task)
+    # Setup group chat
+    groupchat = autogen.GroupChat(agents=[user, booking_agent, worker], messages=[], max_round=12)
+    groupchat_manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
+
+    logging.info('Group chat ready.')
+
+    # Start chat
+
+    user.initiate_chat(groupchat_manager, message='What date is today? What is the cheapest flight from Tokyo to Toronto?')
 
 
 if __name__ == '__main__':

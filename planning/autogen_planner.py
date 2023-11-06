@@ -2,7 +2,7 @@
 
 # Original at https://github.com/microsoft/semantic-kernel/blob/sk-autogen/python/notebooks/planning/autogen_planner.py
 # Switch to using version included in semantic kernel package once available
-# Note added workaround in line 128
+# Note changes around lines 97 and 128
 
 from typing import Optional
 import semantic_kernel, autogen
@@ -87,28 +87,28 @@ Reply TERMINATE when the task is done.
         Get the AutoGen LLM and Function Calling configuration.
         """
         if self.llm_config:
-            if self.llm_config["type"] == "openai":
+            if self.llm_config["api_type"] == "openai": # changed to work with AutoGen v0.2
                 if not self.llm_config["openai_api_key"] or self.llm_config["openai_api_key"] == "sk-...":
                     raise Exception("OpenAI API key is not set")
                 return {
                     "functions": self.__get_function_definitions(),
                     "config_list": [{"model": "gpt-3.5-turbo", "api_key": self.llm_config["openai_api_key"]}],
                 }
-            if self.llm_config["type"] == "azure":
+            if self.llm_config["api_type"] == "azure": # changed to work with AutoGen v0.2
                 if (
-                    not self.llm_config["azure_api_key"]
-                    or not self.llm_config["azure_deployment"]
-                    or not self.llm_config["azure_endpoint"]
+                    not self.llm_config["api_key"]
+                    or not self.llm_config["model"]
+                    or not self.llm_config["base_url"]
                 ):
                     raise Exception("Azure OpenAI API configuration is incomplete")
                 return {
                     "functions": self.__get_function_definitions(),
                     "config_list": [
                         {
-                            "model": self.llm_config["azure_deployment"],
+                            "model": self.llm_config["model"],
                             "api_type": "azure",
-                            "api_key": self.llm_config["azure_api_key"],
-                            "api_base": self.llm_config["azure_endpoint"],
+                            "api_key": self.llm_config["api_key"],
+                            "base_url": self.llm_config["base_url"],
                             "api_version": "2023-08-01-preview",
                         }
                     ],
