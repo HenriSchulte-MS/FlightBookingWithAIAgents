@@ -26,7 +26,7 @@ g_messages = [start_msg]
 async def execute_task(instructions: str):
 
     # Clear global messages list
-    g_messages.clear()
+    reset_messages()
 
     # Determine script location irrespective of current working directory
     app_dir = os.path.dirname(os.path.realpath(__file__))
@@ -96,6 +96,12 @@ def register_reply(agent: autogen.ConversableAgent):
     )
 
 
+# Reset messages to start message
+def reset_messages():
+    g_messages.clear()
+    g_messages.append(start_msg)
+
+
 # Flask route handlers
 
 @app.route('/')
@@ -107,6 +113,10 @@ def home():
 def execute():
     # Get instructions from user
     instructions = request.form['instructions']
+    if instructions == '':
+        reset_messages()
+        g_messages.append({'content': 'Please enter some instructions.', 'role': 'assistant'})
+        return render_template('index.html', messages=g_messages)
 
     def generate():
         asyncio.run(execute_task(instructions))
@@ -117,6 +127,5 @@ def execute():
 
 @app.route('/reset', methods=['GET', 'POST'])
 def reset():
-    g_messages.clear()
-    g_messages.append(start_msg)
+    reset_messages()
     return render_template('index.html', messages=g_messages)
