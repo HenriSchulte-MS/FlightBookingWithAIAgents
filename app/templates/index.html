@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.png') }}">
+    <title>Airline Booking with Semantic Kernel and AutoGen</title>
+</head>
+<body>
+    <div>
+        <h2>AI Agent Airline Booking</h2>
+    </div>
+    <div id="content">
+        <div>
+            <div id="chat_history">
+                {% for message in messages %}
+                    <div class="chat_msg role_{{ message.role }}">
+                        <h4>{{ message.name if message.role == 'function' else message.role }}</h4>
+                        {% if message.content != '' and message.content is not none %}
+                            <span>{{ message.content }}</span>
+                        {% endif %}
+                        {% if message.get('function_call') is not none %}
+                            <span>Making a call to {{ message.function_call.name }} with arguments {{ message.function_call.arguments }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <form action="/execute" method="post" id="user_input">
+                <input type="text" name="instructions" id="instructions" placeholder="Enter your instructions here">
+                <input type="submit" value="Send" id="submit">
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <form action="/reset" method="post" id="reset">
+            <input type="submit" value="Reset" id="reset_button">
+        </form>
+    </div>
+</body>
+</html>
