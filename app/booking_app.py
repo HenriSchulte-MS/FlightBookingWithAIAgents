@@ -9,14 +9,20 @@ import os
 
 async def main():
 
+    # Determine script location irrespective of current working directory
+    app_dir = os.path.dirname(os.path.realpath(__file__))
+
     # Load environment variables from `.env` file
-    load_dotenv()
+    env_path = os.path.join(app_dir, '.env')
+    load_dotenv(env_path)
 
     # Instantiate kernel
     kernel = sk.Kernel()
 
     # Prepare Azure OpenAI service using credentials stored in the `.env` file
-    deployment, api_key, endpoint = sk.azure_openai_settings_from_dot_env()
+    deployment = os.getenv('AZURE_OPENAI_DEPLOYMENT_NAME')
+    api_key = os.getenv('AZURE_OPENAI_API_KEY')
+    endpoint = os.getenv('AZURE_OPENAI_ENDPOINT')
     kernel.add_text_completion_service('gpt-4', AzureTextCompletion(deployment, endpoint, api_key))
 
     logging.info('Kernel loaded.')

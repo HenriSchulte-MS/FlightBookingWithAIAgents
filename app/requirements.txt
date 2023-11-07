@@ -2,5 +2,4 @@ semantic-kernel
 pyautogen==0.2.0b1
 azure-cosmos
 azure-identity
-pandas
 openai>=1.0.0b3

@@ -7,11 +7,16 @@ import random
 import pandas as pd
 import os
 
+# Determine script location irrespective of current working directory
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
 # Load dotenv
-load_dotenv('../.env')
+env_path = os.path.join(script_dir, '../app/.env')
+load_dotenv(env_path)
 
 # Read airports file
-airports = pd.read_csv('airports.csv', sep=';')
+airports_path = os.path.join(script_dir, 'airports.csv')
+airports = pd.read_csv(airports_path, sep=';')
 
 # Get airport count
 airport_count = len(airports)
@@ -36,7 +41,7 @@ flight = {
 credential = DefaultAzureCredential()
 
 # Create a CosmosClient
-conn_str = os.get('COSMOS_CONNECTION_STRING')
+conn_str = os.getenv('COSMOS_CONNECTION_STRING')
 cosmos_client = CosmosClient.from_connection_string(conn_str=conn_str)
 database_client = cosmos_client.get_database_client('AirlineBooking')
 container_client = database_client.get_container_client('Flights')
