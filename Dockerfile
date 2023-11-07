@@ -3,7 +3,7 @@ ENV PORT 5000
 EXPOSE 5000
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
+COPY app/requirements.txt ./
 RUN pip install --no-cache-dir -r app/requirements.txt
 
 COPY . .
