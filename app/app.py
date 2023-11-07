@@ -113,3 +113,10 @@ def execute():
         yield render_template('index.html', messages=g_messages)
 
     return Response(stream_with_context(generate()))
+
+
+@app.route('/reset', methods=['GET', 'POST'])
+def reset():
+    g_messages.clear()
+    g_messages.append(start_msg)
+    return render_template('index.html', messages=g_messages)
