@@ -4,3 +4,4 @@ azure-cosmos
 azure-identity
 openai>=1.0.0b3
 flask
+gunicorn
