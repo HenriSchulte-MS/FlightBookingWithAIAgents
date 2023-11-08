@@ -77,6 +77,10 @@ async def execute_task(instructions: str):
 
     worker.initiate_chat(booking_agent, message=instructions)
 
+    # The last message always has role 'user', which may be a bug
+    # Change it to role 'assistant' to be displayed correctly
+    g_messages[-1]['role'] = 'assistant'
+
 
 # Register reply function, so that when a message is sent to the agent,
 # it is added to the global messages list
