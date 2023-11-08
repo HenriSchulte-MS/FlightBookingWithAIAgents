@@ -116,13 +116,13 @@ def execute():
     if instructions == '':
         reset_messages()
         g_messages.append({'content': 'Please enter some instructions.', 'role': 'assistant'})
-        return render_template('index.html', messages=g_messages)
+        return render_template('index.html', messages=g_messages, allow_input=True)
 
     asyncio.run(execute_task(instructions))
-    return render_template('index.html', messages=g_messages)
+    return render_template('index.html', messages=g_messages, allow_input=False)
 
 
 @app.route('/reset', methods=['GET', 'POST'])
 def reset():
     reset_messages()
-    return render_template('index.html', messages=g_messages)
+    return render_template('index.html', messages=g_messages, allow_input=True)

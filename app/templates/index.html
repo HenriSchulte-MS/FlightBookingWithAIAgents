@@ -25,17 +25,21 @@
                 {% endfor %}
             </div>
         </div>
+        {%if allow_input %}
         <div>
             <form action="/execute" method="post" id="user_input">
                 <input type="text" name="instructions" id="instructions" placeholder="Enter your instructions here">
                 <input type="submit" value="Send" id="submit">
             </form>
         </div>
+        {% endif %}
     </div>
-    <div id="footer">
-        <form action="/reset" method="post" id="reset">
-            <input type="submit" value="Reset" id="reset_button">
-        </form>
-    </div>
+    {%if not allow_input %}
+        <div id="footer">
+            <form action="/reset" method="post" id="reset">
+                <input type="submit" value="Reset" id="reset_button">
+            </form>
+        </div>
+    {% endif %}
 </body>
 </html>
