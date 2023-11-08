@@ -70,6 +70,23 @@ input {
     align-self: flex-end;
 }
 
+.hide_intermediate {
+    display: none;
+}
+
+.show_intermediate {
+    display: flex;
+}
+
+#show_steps_button {
+    border: none;
+    background-color: transparent;
+    color: #949494;
+    margin-bottom: 5px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
 #user_input {
     font-family: 'Segoe UI', sans-serif;
     font-size: 1em;
