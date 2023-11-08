@@ -6,7 +6,7 @@ import semantic_kernel as sk
 import logging
 from dotenv import load_dotenv
 import os
-from flask import Flask, render_template, request, stream_with_context, Response
+from flask import Flask, render_template, request
 import autogen
 import asyncio
 
@@ -118,11 +118,8 @@ def execute():
         g_messages.append({'content': 'Please enter some instructions.', 'role': 'assistant'})
         return render_template('index.html', messages=g_messages)
 
-    def generate():
-        asyncio.run(execute_task(instructions))
-        yield render_template('index.html', messages=g_messages)
-
-    return Response(stream_with_context(generate()))
+    asyncio.run(execute_task(instructions))
+    return render_template('index.html', messages=g_messages)
 
 
 @app.route('/reset', methods=['GET', 'POST'])
