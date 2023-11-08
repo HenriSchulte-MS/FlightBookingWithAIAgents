@@ -20,7 +20,7 @@ input {
     color: #000;
     margin: 0 0 0.5em 0;
     padding: 7px;
-    border: 1px solid grey;
+    border: 1px solid #e5e5e5;
     border-radius: 10px;
 }
 
@@ -29,8 +29,8 @@ input {
 }
 
 #submit {
-    background-color: #87CBFF;
-    color: #000;
+    background-color: #acdcf3;
+    color: #3f3f3f;
     font-weight: bold;
     cursor: pointer;
 }
@@ -39,6 +39,8 @@ input {
     display: flex;
     flex-direction: column;
     width: 600px;
+    overflow-y: auto;
+    max-height: 40vh;
 }
 
 .chat_msg {
@@ -48,7 +50,7 @@ input {
     color: #000;
     margin: 0 0 0.75em 0;
     padding: 10px;
-    background-color: #E5BCE9;
+    background-color: #f7e3b7;
     border-radius: 10px;
     max-width: 50vw;
     display: flex;
@@ -59,16 +61,14 @@ input {
 
 
 .role_function {
-    background-color: #cfcfcf;
+    background-color: #e5e5e5;
 }
 
-
 .role_user {
-    background-color: #87CBFF;
+    background-color: #acdcf3;
     justify-content: flex-end;
     align-self: flex-end;
 }
-
 
 #user_input {
     font-family: 'Segoe UI', sans-serif;
@@ -86,8 +86,6 @@ input {
     background-color: white;
     border-radius: 15px;
     padding: 2.5%;
-    max-height: 75vh;
-    overflow-y: auto;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -95,7 +93,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background:  linear-gradient(to right, #F3EEF9, #CFE7F4)
+    background:  linear-gradient(to right, #fff4dd, #CFE7F4)
 }
 
 #footer {
@@ -110,4 +108,13 @@ body {
     color: #949494;
     margin-top: 5px;
     cursor: pointer;
+}
+
+#banner {
+    width: 600px;
+    top: 20px;
+    position: relative;
+    z-index: -1;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
