@@ -11,21 +11,21 @@
     </div>
     <div id="content">
         <div>
-            <div id="chat_history">
+            <div id="chat-history">
                 {% for message in messages %}
                     {% if loop.index > 2 and loop.last %}
-                        <button id="show_steps_button">Show intermediate steps</button>
+                        <button id="show-steps-button">Show intermediate steps</button>
                         <script>
-                            document.getElementById("show_steps_button").addEventListener("click", function() {
-                                var elements = document.getElementsByClassName("intermediate_step");
+                            document.getElementById("show-steps-button").addEventListener("click", function() {
+                                var elements = document.getElementsByClassName("intermediate-step");
                                 for (var i = 0; i < elements.length; i++) {
-                                    elements[i].classList.replace("hide_intermediate", "show_intermediate");
+                                    elements[i].classList.replace("hide-intermediate", "show-intermediate");
                                 }
                                 this.style.display = "none";
                             });
                         </script>
                     {% endif %}
-                    <div class="chat_msg role_{{ message.role }} {{ 'intermediate_step hide_intermediate' if loop.index > 2 and not loop.last }}" >
+                    <div class="chat-msg role-{{ message.role }} {{ 'intermediate-step hide-intermediate' if loop.index > 2 and not loop.last }}" >
                         <h4>{{ message.name if message.role == 'function' else message.role }}</h4>
                         {% if message.content != '' and message.content is not none %}
                             <span>{{ message.content }}</span>
@@ -39,7 +39,7 @@
         </div>
         {%if allow_input %}
         <div>
-            <form action="/execute" method="post" id="user_input">
+            <form action="/execute" method="post" id="user-input">
                 <input type="text" name="instructions" id="instructions" placeholder="Book the cheapest flight from Tokyo to Toronto">
                 <input type="submit" value="Send" id="submit">
             </form>
@@ -49,7 +49,7 @@
     {%if not allow_input %}
         <div id="footer">
             <form action="/reset" method="post" id="reset">
-                <input type="submit" value="Reset" id="reset_button">
+                <input type="submit" value="Reset" id="reset-button">
             </form>
         </div>
     {% endif %}

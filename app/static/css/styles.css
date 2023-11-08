@@ -35,7 +35,7 @@ input {
     cursor: pointer;
 }
 
-#chat_history {
+#chat-history {
     display: flex;
     flex-direction: column;
     width: 600px;
@@ -43,7 +43,7 @@ input {
     max-height: 40vh;
 }
 
-.chat_msg {
+.chat-msg {
     font-family: 'Segoe UI', sans-serif;
     font-size: 1em;
     font-weight: 400;
@@ -60,25 +60,25 @@ input {
 }
 
 
-.role_function {
+.role-function {
     background-color: #e5e5e5;
 }
 
-.role_user {
+.role-user {
     background-color: #acdcf3;
     justify-content: flex-end;
     align-self: flex-end;
 }
 
-.hide_intermediate {
+.hide-intermediate {
     display: none;
 }
 
-.show_intermediate {
+.show-intermediate {
     display: flex;
 }
 
-#show_steps_button {
+#show-steps-button {
     border: none;
     background-color: transparent;
     color: #949494;
@@ -87,7 +87,7 @@ input {
     align-self: flex-start;
 }
 
-#user_input {
+#user-input {
     font-family: 'Segoe UI', sans-serif;
     font-size: 1em;
     font-weight: 400;
@@ -119,7 +119,7 @@ body {
     align-items: center;
 }
 
-#reset_button {
+#reset-button {
     border: none;
     background-color: transparent;
     color: #949494;
