@@ -114,9 +114,7 @@ def execute():
     # Get instructions from user
     instructions = request.form['instructions']
     if instructions == '':
-        reset_messages()
-        g_messages.append({'content': 'Please enter some instructions.', 'role': 'assistant'})
-        return render_template('index.html', messages=g_messages, allow_input=True)
+        instructions = 'Book the cheapest flight from Tokyo to Toronto'
 
     asyncio.run(execute_task(instructions))
     return render_template('index.html', messages=g_messages, allow_input=False)
