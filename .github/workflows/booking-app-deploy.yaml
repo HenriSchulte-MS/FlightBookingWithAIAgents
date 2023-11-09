@@ -22,6 +22,9 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: azure/login@92a5484dfaf04ca78a94597f4f19fea633851fa2
+            - name: Install Azure CLI
+                  run: |
+                        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
               name: Azure login
               with:
                 client-id: ${{ secrets.AZURE_CLIENT_ID }}
