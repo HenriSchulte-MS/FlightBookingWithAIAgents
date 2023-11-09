@@ -1,7 +1,7 @@
 semantic-kernel
-pyautogen==0.2.0b1
+pyautogen
 azure-cosmos
 azure-identity
-openai>=1.0.0b3
+openai
 flask
 gunicorn

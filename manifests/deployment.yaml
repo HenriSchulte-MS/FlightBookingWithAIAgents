@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-app-deploy
+  labels:
+    app: booking-app-deploy
+  namespace: airlinemultibotbookingservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: booking-app-deploy
+  template:
+    metadata:
+      labels:
+        app: booking-app-deploy
+    spec:
+      containers:
+        - name: booking-app-deploy
+          image: crazk8s674ybotappllrfqd6gqdqbe.azurecr.io/image-workflow-1699542549132:latest
+          ports:
+            - containerPort: 80

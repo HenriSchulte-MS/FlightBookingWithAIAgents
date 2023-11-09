@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: booking-app-deploy
+  namespace: airlinemultibotbookingservice
+spec:
+  type: ClusterIP
+  selector:
+    app: booking-app-deploy
+  ports:
+      port: 80
+  Selector:
+    app: booking-app-deploy
