@@ -6,7 +6,7 @@ import semantic_kernel as sk
 import logging
 from dotenv import load_dotenv
 import os
-from flask import Flask, render_template, request, stream_with_context, Response
+from flask import Flask, render_template, request
 import autogen
 import asyncio
 
@@ -77,6 +77,10 @@ async def execute_task(instructions: str):
 
     worker.initiate_chat(booking_agent, message=instructions)
 
+    # The last message always has role 'user', which may be a bug
+    # Change it to role 'assistant' to be displayed correctly
+    g_messages[-1]['role'] = 'assistant'
+
 
 # Register reply function, so that when a message is sent to the agent,
 # it is added to the global messages list
@@ -114,18 +118,13 @@ def execute():
     # Get instructions from user
     instructions = request.form['instructions']
     if instructions == '':
-        reset_messages()
-        g_messages.append({'content': 'Please enter some instructions.', 'role': 'assistant'})
-        return render_template('index.html', messages=g_messages)
+        instructions = 'Book the cheapest flight from Tokyo to Toronto'
 
-    def generate():
-        asyncio.run(execute_task(instructions))
-        yield render_template('index.html', messages=g_messages)
-
-    return Response(stream_with_context(generate()))
+    asyncio.run(execute_task(instructions))
+    return render_template('index.html', messages=g_messages, allow_input=False)
 
 
 @app.route('/reset', methods=['GET', 'POST'])
 def reset():
     reset_messages()
-    return render_template('index.html', messages=g_messages)
+    return render_template('index.html', messages=g_messages, allow_input=True)
