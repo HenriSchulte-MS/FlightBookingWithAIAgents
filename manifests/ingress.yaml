@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: booking-app-deploy
+  namespace: airlinemultibotbookingservice
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+ - host: <Hostname>
+    http:
+      paths:
+      - backend:
+          service:
+            name: booking-app-deploy
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

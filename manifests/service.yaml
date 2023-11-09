@@ -4,10 +4,10 @@ metadata:
   name: booking-app-deploy
   namespace: airlinemultibotbookingservice
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: booking-app-deploy
   ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 5000
+      port: 80
+  Selector:
+    app: booking-app-deploy

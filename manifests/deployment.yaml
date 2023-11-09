@@ -19,4 +19,4 @@ spec:
         - name: booking-app-deploy
           image: crazk8s674ybotappllrfqd6gqdqbe.azurecr.io/image-workflow-1699542549132:latest
           ports:
-            - containerPort: 5000
+            - containerPort: 80
