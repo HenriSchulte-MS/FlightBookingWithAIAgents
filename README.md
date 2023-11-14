@@ -1,4 +1,4 @@
-# 🛫 Airline Booking Demo with AutoGen and Semantic Kernel
+# 🛫 Flight Booking Demo with AutoGen and Semantic Kernel
 
 ![Two pilots smiling](/app/static/img/banner.png)<br>
 <small>*Image generated with DALLE-3 in [Bing Image Creator](https://bing.com/images/create)*</small>
