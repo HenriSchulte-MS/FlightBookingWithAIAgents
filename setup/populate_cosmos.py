@@ -54,7 +54,7 @@ for i in range(3):
   flight['price'] = random.randint(100, 500)
 
   # Add a random date
-  future_days = random.randint(8, 15)  # choose a random number of days in the future up to a week
+  future_days = random.randint(0, 7)  # choose a random number of days in the future up to a week
   future_date = dt.datetime.now() + dt.timedelta(days=future_days)
   flight['date'] = future_date.strftime("%Y-%m-%d")
 
