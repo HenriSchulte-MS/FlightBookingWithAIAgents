@@ -48,7 +48,7 @@ async def execute_task(instructions: str):
 
     # Register plugins
     cosmos_conn_str = os.getenv('COSMOS_CONNECTION_STRING')
-    cosmos_plugin = kernel.import_skill(FlightsPlugin(cosmos_conn_str), skill_name='FlightsPlugin')
+    flights_plugin = kernel.import_skill(FlightsPlugin(cosmos_conn_str), skill_name='FlightsPlugin')
     time_skill = kernel.import_skill(TimeSkill(), skill_name='TimeSkill')
 
     logging.info('Plugins registered.')
