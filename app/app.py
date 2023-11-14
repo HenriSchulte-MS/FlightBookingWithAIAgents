@@ -110,7 +110,7 @@ def reset_messages():
 
 @app.route('/')
 def home():
-    return render_template('index.html', messages=g_messages)
+    return render_template('index.html', messages=g_messages, allow_input=True)
 
 
 @app.route('/execute', methods=['GET', 'POST'])
