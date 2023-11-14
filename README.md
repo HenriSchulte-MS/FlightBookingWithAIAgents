@@ -16,9 +16,9 @@ To make the agents' thought process transparent, the app visualizes their back-a
 | 🤖 Assistant   | *Making a call to GetFlights function with input "Tokyo, Toronto"*   |
 | 🖥️ GetFlights | *List of flights from Tokyo to Toronto, incl. details like time and price* |
 | 🤖 Assistant | *Making a call to BookFlights function with the flight ID of the cheapest flight* |
-| 🖥️ BookFlights | The flight could not be booked. There are no free seats available. |
+| 🖥️ BookFlight | The flight could not be booked. There are no free seats available. |
 | 🤖 Assistant | I regret to inform you that the cheapest flight from Tokyo to Toronto is currently fully booked. Let's try to book the next available option for you. <br>*Making a call to BookFlights function with the flight ID of the next cheapest flight* |
-| 🖥️ BookFlights | Flight successfully booked. |
+| 🖥️ BookFlight | Flight successfully booked. |
 | 🤖 Assistant | Great news! I've successfully booked your flight from Tokyo to Toronto. This is your flight detail: [...]
 
 ## Running the app locally
