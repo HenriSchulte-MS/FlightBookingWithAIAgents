@@ -37,7 +37,7 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 1. Add the read-write connection string for your **CosmosDB** resource to the `.env` file.
 1. To populate the database, run [populate_cosmos.py](/setup/populate_cosmos.py) a few times. You might have to install `pandas` if it's not present in your virtual environment. Every time you run it, the script adds three new flights to the database. 
 
-## Running the application
+### Running the application
 1. In your terminal, switch to the `app` directory. 
 1. Run `flask run` to start the app.
 1. Click the link in your terminal or navigate to `http://127.0.0.1:5000` in your browser to view the application.
