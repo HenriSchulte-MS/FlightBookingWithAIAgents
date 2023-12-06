@@ -21,6 +21,8 @@ To make the agents' thought process transparent, the app visualizes their back-a
 | 🖥️ BookFlight | Flight successfully booked. |
 | 🤖 Assistant | Great news! I've successfully booked your flight from Tokyo to Toronto. This is your flight detail: [...]
 
+This project was inspired by John Maeda's devblog [AutoGen Agents Meet Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/autogen-agents-meet-semantic-kernel/).
+
 ## Running the app locally
 This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosDB** for data storage. You can run the application itself locally by following the steps below.
 
