@@ -51,6 +51,9 @@ class FlightsPlugin:
     )
     def book_flight(self, input: str) -> str:
             
+            if not input:
+                return "Please provide a flight id."
+
             # Extract the flight id from the input
             flight_id = input
     
