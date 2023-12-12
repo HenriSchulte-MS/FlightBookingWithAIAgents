@@ -29,7 +29,7 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 ### Setting up your environment
 1. Clone this repo to your machine.
 1. Create a Python virtual environment and activate it.
-1. Install the libraries listed in [requirements.txt](app/requirements.txt). `Semantic Kernel 0.3.14.dev` does not currently support `openai 1.0`, so you might see dependency conflicts. Force the installations of the exact versions mentioned.
+1. Install the libraries listed in [requirements.txt](app/requirements.txt).
 1. Rename the [.env.example](/app/.env.example) file to `.env`. You will populate it in the next section.
 
 ### Setting up your Azure resources
