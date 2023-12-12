@@ -42,7 +42,7 @@ async def execute_task(instructions: str):
     deployment = os.getenv('AZURE_OPENAI_DEPLOYMENT_NAME')
     api_key = os.getenv('AZURE_OPENAI_API_KEY')
     endpoint = os.getenv('AZURE_OPENAI_ENDPOINT')
-    kernel.add_text_completion_service('gpt-4', AzureTextCompletion(deployment, endpoint, api_key))
+    kernel.add_text_completion_service('gpt-4', AzureTextCompletion(deployment_name=deployment, endpoint=endpoint, api_key=api_key, api_version='2023-07-01-preview'))
 
     logging.info('Kernel loaded.')
 
