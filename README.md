@@ -52,6 +52,8 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 1. You should receive an output in your webbrowser saying that a flight has been successfully booked. 
 1. You can have a look at the intermediate steps to see how the AI agents came to the conclusion to finally have a flight booked for you.
 
+**Please note**: For the demo to run successfully, you'll need to verify that the destination and arrival airports are successfully populated in your CosmosDB.
+
 ### Example run 
 
 ### Screenshot
