@@ -28,16 +28,16 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 
 ### Setting up your environment
 1. Clone this repo to your machine.
-1. Create a Python virtual environment and activate it, e.g. by running `python3 -m venv venv` and `source venv/bin/activate`.
+1. Create a Python virtual environment and activate it, e.g. by running `python3 -m venv .venv` and `source .venv/bin/activate`.
 1. Install the libraries listed in [requirements.txt](app/requirements.txt) by running `pip install -r app/requirements.txt`.
 1. Rename the [.env.example](/app/.env.example) file to `.env`. You will populate it in the next section.
 
 ### Setting up your Azure resources
 1. Create an **Azure OpenAI** resource and deploy a `gpt-35-turbo` or `gpt-4` model.
 1. Add the deployment name, resource endpoint, and key to the `.env` file.
-1. Create an **Azure CosmosDB** resource, "Azure Cosmos DB for NoSQL" should be fine. Within, create a database `AirlineBooking` and a container `Flights`.
+1. Create an **Azure CosmosDB** resource, specifically, "Azure Cosmos DB for NoSQL". Within, create a database `AirlineBooking` and a container `Flights`.
 1. Add the read-write connection string for your **CosmosDB** resource to the `.env` file.
-1. To populate the database, run [populate_cosmos.py](/setup/populate_cosmos.py) like 10 times (`python3 setup/populate_cosmos.py`). You might have to install `pandas` if it's not present in your virtual environment (`pip install pandas`). Every time you run it, the script adds three new flights to the database. 
+1. To populate the database, run [populate_cosmos.py](/setup/populate_cosmos.py) a few (e.g., 10) times (`python3 setup/populate_cosmos.py`). You might have to install `pandas` if it's not present in your virtual environment (`pip install pandas`). Every time you run it, the script adds three new flights to the database. 
 
 ### Running the application
 1. In your terminal, switch to the `app` directory. 
@@ -52,14 +52,9 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 1. You should receive an output in your webbrowser saying that a flight has been successfully booked. 
 1. You can have a look at the intermediate steps to see how the AI agents came to the conclusion to finally have a flight booked for you.
 
-**Please note**: For the demo to run successfully, you'll need to verify that the destination and arrival airports are successfully populated in your CosmosDB.
+**Please note**: For the demo to run successfully, you'll need to verify that CosmosDB contains direct flights between the requested cities.
 
-### Example run 
-
-### Screenshot
+### Screenshots
 
 ![demo start](assets/demo-start.png)
 ![demo final](assets/demo-final.png)
-
-#### Video
-
