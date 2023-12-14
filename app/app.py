@@ -92,7 +92,9 @@ def register_reply(agent: autogen.ConversableAgent):
         if last_msg.get('content') != '' or last_msg.get('function_call') is not None:
             g_messages.append(messages[-1]) # add last message in the list of messages
             print(messages[-1])
-        return False, None  # required to ensure the agent communication flow continues
+            return False, None  # required to ensure the agent communication flow continues
+        else:
+            return True, None
 
     agent.register_reply(
         [autogen.Agent, None],
