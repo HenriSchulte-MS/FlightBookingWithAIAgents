@@ -58,8 +58,8 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 
 ### Screenshot
 
-[demo start](assets/demo-start.png)
-[demo final](assets/demo-final.png)
+![demo start](assets/demo-start.png)
+![demo final](assets/demo-final.png)
 
 #### Video
 
