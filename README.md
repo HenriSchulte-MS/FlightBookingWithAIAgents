@@ -44,3 +44,20 @@ This app utilizes **Azure OpenAI** for Large Language Models and **Azure CosmosD
 1. Run `flask run` to start the app.
 1. Click the link in your terminal or navigate to `http://127.0.0.1:5000` in your browser to view the application.
 1. Enter your instructions and click **Send**. The agents will react to your instructions and the final result is displayed. To see intermediate steps, click **Show intermediate steps**. You can try a new instruction by clicking **Start over** in the bottom of the page.
+
+### Example walkthrough
+
+1. Once the application is up and running, enter a promp such as `Book the cheapest flight from Brussels to Vienna` into the input box. Hit send.
+1. It might take some seconds for the app to respond. You can watch the progress in your terminal to see what is happening behind the scenes.
+1. You should receive an output in your webbrowser saying that a flight has been successfully booked. 
+1. You can have a look at the intermediate steps to see how the AI agents came to the conclusion to finally have a flight booked for you.
+
+### Example run 
+
+### Screenshot
+
+[demo start](assets/demo-start.png)
+[demo final](assets/demo-final.png)
+
+#### Video
+
